@@ -1,0 +1,97 @@
+# RescueCTA configuration corresponding to the manuscript model.
+# Replace the placeholder data roots before training.
+project_name: "rescuecta_paper"
+base: "outputs"
+data_root: "/path/to/train"
+val_data_root: "/path/to/validation"
+source_dir: "source"
+cta_dir: "target"
+image_channels: 3
+cache_dir: null
+val_cache_dir: null
+
+g_name: "rescuecta"
+d_name: "multi_feat"
+
+vgg:
+  use_imagenet_norm: true
+  clamp_to_01: true
+  weights: "default"
+
+augmentation:
+  random_rotate: true
+  rotate_degrees: 3.0
+  # The historical value was 3.0 in a probability comparison and therefore
+  # applied rotation to every pair. 1.0 is the equivalent valid probability.
+  rotate_prob: 1.0
+
+training:
+  batch_size: 20
+  print_freq: 20
+  val_freq: 20
+  total_epoch: 200
+  lr_ini: 0.0002
+  beta1: 0.5
+  beta2: 0.999
+  clip_gradient_norm: 1000
+  discriminator_train_ratio: 1
+  start_epoch: 0
+  random_seed: 42
+  ema:
+    enabled: true
+    decay: 0.999
+    update_every: 1
+    update_buffers: true
+    use_for_val: true
+    use_for_train_vis: false
+  loss_guard:
+    enabled: true
+    mode: "zscore"
+    window_size: 100
+    warmup_iters: 100
+    zscore_threshold: 20
+    skip_on_non_finite: true
+
+loss_schedule:
+  L1:
+    type: "constant"
+    value: 50
+  GAN:
+    type: "linear"
+    start: 0.1
+    end: 1.0
+    start_epoch: 0
+    end_epoch: 40
+  VGG:
+    type: "constant"
+    value: 8
+  feat:
+    type: "constant"
+    value: 10
+  edge:
+    type: "linear"
+    start: 0
+    end: 3
+    start_epoch: 100
+    end_epoch: 200
+  laplacian:
+    type: "linear"
+    start: 0
+    end: 3
+    start_epoch: 150
+    end_epoch: 250
+
+checkpoint:
+  save_every_epochs: 10
+
+will_val: true
+visualization:
+  train_every_iters: 10
+  val_every_n: 10
+  val_save_input_real_once: true
+
+lr_decay: 0
+scheduler: "cosine"
+
+multi_gpu:
+  use_gpus: [0, 1, 2, 3]
