@@ -1,5 +1,16 @@
 # RescueCTA
 
+[![Journal](https://img.shields.io/badge/Journal-Frontiers_in_Neurology-1F6FEB)](https://doi.org/10.3389/fneur.2026.1955596)
+[![DOI](https://img.shields.io/badge/DOI-10.3389%2Ffneur.2026.1955596-2EA44F)](https://doi.org/10.3389/fneur.2026.1955596)
+[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC_BY--NC_4.0-lightgrey)](https://creativecommons.org/licenses/by-nc/4.0/)
+[![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB)](https://www.python.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-EE4C2C)](https://pytorch.org/)
+
+> :tada: **News (2026):** RescueCTA has been accepted for publication in
+> [Frontiers in Neurology](https://doi.org/10.3389/fneur.2026.1955596) —
+> *Generative enhancement of suboptimally opacified cerebral CT angiography
+> for large-vessel occlusion detection: a multireader study*.
+
 RescueCTA is a paired, supervised 2.5D conditional generative model for
 vascular image enhancement after suboptimal arterial-phase CT angiography
 (CTA). It generates a synthetic rescue CTA volume from a single
@@ -143,7 +154,41 @@ checkpoints, or training outputs are included. Access to study data and trained
 weights is subject to institutional approvals and the data-sharing statement
 of the associated manuscript.
 
+<sub><em>Note on reported performance. All quantitative results in the
+manuscript were obtained on the authors' internal datasets, preprocessing,
+and hardware. Results obtained with this code on other data or equipment
+are expected to differ, and identical metrics from third-party
+reproduction are neither guaranteed nor implied.</em></sub>
+
+## Citation
+
+If you use this repository in your research, please cite the associated
+paper:
+
+```bibtex
+@article{tu2026rescuecta,
+  author  = {Tu, Y. and Wang, M. and Sun, Z. and Zeng, Y. and Li, Y. and
+             Tang, Y. and Yang, Y. and Cao, Z. and Hu, S. and Wang, D. and
+             Li, Y.},
+  title   = {Generative enhancement of suboptimally opacified cerebral
+             {CT} angiography for large-vessel occlusion detection:
+             a multireader study},
+  journal = {Frontiers in Neurology},
+  year    = {2026},
+  volume  = {17},
+  doi     = {10.3389/fneur.2026.1955596}
+}
+```
+
+This code is provided as a curated research artifact of the published
+study. Reuse, retraining, or re-evaluation outside the settings of the
+original study is at the discretion and responsibility of the user (see
+the performance note above and the license below).
+
 ## License
 
-No software license has yet been assigned. Contact the authors before reuse or
-redistribution.
+This repository is licensed under the
+[Creative Commons Attribution-NonCommercial 4.0 International License
+(CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/); the full
+license text is provided in [LICENSE](LICENSE). Commercial use requires
+prior written permission from the authors.
